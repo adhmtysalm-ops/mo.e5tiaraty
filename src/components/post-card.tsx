@@ -9,7 +9,7 @@ export function PostCard({
   variant = "grid",
 }: {
   post: PostSummary;
-  variant?: "grid" | "row" | "mosaic";
+  variant?: "grid" | "row" | "mosaic" | "brief";
 }) {
   const category = post.categories[0];
 
@@ -38,6 +38,22 @@ export function PostCard({
             {formatDate(post.date)} · {readingLabel(post.readingMinutes)}
           </p>
         </div>
+      </Link>
+    );
+  }
+
+  if (variant === "brief") {
+    return (
+      <Link
+        to="/post/$slug"
+        params={{ slug: post.slug }}
+        className="group block border-b border-border py-3 first:pt-0 last:border-0"
+      >
+        {category ? <span className="text-[0.7rem] font-medium text-accent">{category.name}</span> : null}
+        <h3 className="mt-1 line-clamp-3 text-sm font-semibold leading-6 tracking-tight text-fg transition-colors group-hover:text-accent">
+          {post.title}
+        </h3>
+        <p className="mt-2 text-[0.7rem] text-subtle">{formatDate(post.date)}</p>
       </Link>
     );
   }

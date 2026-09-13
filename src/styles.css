@@ -104,6 +104,132 @@
   p {
     text-wrap: pretty;
   }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--app-accent);
+    outline-offset: 4px;
+  }
+}
+
+.editorial-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--app-border);
+  padding: 1rem 0 1.25rem;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-accent);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(15rem, 0.82fr) minmax(12rem, 0.58fr);
+  gap: 0;
+  direction: rtl;
+}
+
+.editorial-grid > * {
+  min-width: 0;
+  direction: rtl;
+}
+
+.editorial-lead {
+  padding-inline-end: 1.5rem;
+}
+
+.editorial-column {
+  border-inline-start: 1px solid var(--app-border);
+  padding-inline: 1.25rem;
+}
+
+.editorial-column:last-child {
+  padding-inline-end: 0;
+}
+
+.editorial-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  color: var(--app-fg);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.editorial-heading-line {
+  height: 3px;
+  width: 2rem;
+  background: var(--app-accent);
+}
+
+.editorial-brief-list {
+  border-top: 1px solid var(--app-border);
+}
+
+.editorial-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .editorial-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(14rem, 0.8fr);
+    gap: 1.25rem;
+  }
+
+  .editorial-lead {
+    grid-column: span 2;
+    padding-inline-end: 0;
+  }
+
+  .editorial-column {
+    border-top: 1px solid var(--app-border);
+    border-inline-start: 0;
+    padding: 1.25rem 0 0;
+  }
+
+  .editorial-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .editorial-intro {
+    padding-top: 0.5rem;
+  }
+
+  .editorial-grid,
+  .editorial-card-grid {
+    display: block;
+  }
+
+  .editorial-lead {
+    margin-bottom: 2rem;
+  }
+
+  .editorial-column {
+    margin-top: 1.5rem;
+  }
+
+  .editorial-column + .editorial-column {
+    margin-top: 2rem;
+  }
+
+  .editorial-card-grid > * + * {
+    margin-top: 1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

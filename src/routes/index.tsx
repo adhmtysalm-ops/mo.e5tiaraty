@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Clock3, Flame, Radio } from "lucide-react";
 import { FeaturedHero } from "@/components/featured-hero";
 import { Pagination } from "@/components/pagination";
 import { PostCard } from "@/components/post-card";
@@ -27,34 +27,68 @@ function HomePage() {
   const page = Route.useSearch().page ?? 1;
 
   return (
-    <main id="main" className="mx-auto max-w-[1280px] px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+    <main id="main" className="mx-auto max-w-[1380px] px-4 pb-20 pt-6 sm:px-6 lg:px-8">
+      <div className="editorial-intro">
+        <div>
+          <p className="section-kicker"><Radio className="size-3.5" /> غرفة الأخبار</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-[-0.04em] text-fg sm:text-4xl">آخر الأخبار والتحليلات</h1>
+        </div>
+        <p className="hidden max-w-[30ch] text-sm leading-7 text-muted md:block">
+          قراءة أسرع للخبر الأهم، ورأي أوضح قبل قرارك القادم.
+        </p>
+      </div>
+
       {page === 1 && data.featured ? (
-        <Reveal>
-          <FeaturedHero post={data.featured} />
-        </Reveal>
+        <section className="editorial-grid mt-6" aria-label="أبرز الأخبار">
+          <Reveal className="editorial-lead lg:col-span-7">
+            <FeaturedHero post={data.featured} editorial />
+          </Reveal>
+
+          <section className="editorial-column lg:col-span-3" aria-labelledby="editors-picks">
+            <div className="editorial-heading">
+              <h2 id="editors-picks">اختيارات المحررين</h2>
+              <span className="editorial-heading-line" />
+            </div>
+            <div className="space-y-4">
+              {data.mosaic.map((post, i) => (
+                <Reveal key={post.id} delay={i * 80}>
+                  <PostCard post={post} variant="row" />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          <section className="editorial-column lg:col-span-2" aria-labelledby="latest-picks">
+            <div className="editorial-heading">
+              <h2 id="latest-picks">الأحدث</h2>
+              <span className="editorial-heading-line" />
+            </div>
+            <div className="editorial-brief-list">
+              {data.rest.slice(0, 5).map((post, i) => (
+                <Reveal key={post.id} delay={i * 60}>
+                  <PostCard post={post} variant="brief" />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        </section>
       ) : (
         <header className="mb-8">
           <h1 className="text-3xl font-semibold tracking-tight">الأحدث</h1>
         </header>
       )}
 
-      {data.mosaic.length > 0 ? (
-        <section className="mt-8 grid gap-6 md:grid-cols-2">
-          {data.mosaic.map((post, i) => (
-            <Reveal key={post.id} delay={i * 80}>
-              <PostCard post={post} variant="mosaic" />
-            </Reveal>
-          ))}
-        </section>
-      ) : null}
-
       {data.rest.length > 0 ? (
-        <section className="mt-12">
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-semibold tracking-tight">مختارات هذا الأسبوع</h2>
+        <section className="mt-16">
+          <div className="mb-6 flex items-end justify-between gap-4 border-b border-border pb-4">
+            <div>
+              <p className="section-kicker"><Flame className="size-3.5" /> تستحق القراءة</p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight">مختارات هذا الأسبوع</h2>
+            </div>
+            <span className="hidden items-center gap-2 text-xs text-subtle sm:flex"><Clock3 className="size-3.5" /> تحديث مستمر</span>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {data.rest.map((post, i) => (
+          <div className="editorial-card-grid">
+            {data.rest.slice(5).map((post, i) => (
               <Reveal key={post.id} delay={(i % 3) * 70}>
                 <PostCard post={post} />
               </Reveal>
