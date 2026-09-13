@@ -10,7 +10,7 @@ export function FeaturedHero({ post, editorial = false }: { post: PostSummary; e
   return (
     <Link to="/post/$slug" params={{ slug: post.slug }} className="group block">
       <article className={editorial ? "grid overflow-hidden bg-surface shadow-[var(--shadow-border)]" : "grid overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)] lg:grid-cols-12"}>
-        <div className="relative aspect-[16/11] overflow-hidden bg-elevated lg:aspect-auto lg:min-h-[31rem]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-elevated lg:min-h-0">
           <CoverImage
             src={post.image}
             alt={post.imageAlt}

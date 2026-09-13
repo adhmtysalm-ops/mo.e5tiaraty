@@ -18,9 +18,9 @@ export function PostCard({
       <Link
         to="/post/$slug"
         params={{ slug: post.slug }}
-        className="group grid grid-cols-[7.5rem_1fr] gap-4 rounded-xl p-1.5 transition-[background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-surface sm:grid-cols-[10rem_1fr]"
+        className="group grid grid-cols-[6.5rem_1fr] gap-3 rounded-lg p-1.5 transition-[background-color] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-surface sm:grid-cols-[9.5rem_1fr]"
       >
-        <div className="aspect-[4/3] overflow-hidden rounded-lg bg-elevated">
+        <div className="aspect-[16/10] overflow-hidden rounded-lg bg-elevated">
           <CoverImage
             src={post.image}
             alt={post.imageAlt}
@@ -70,7 +70,7 @@ export function PostCard({
         <div
           className={cn(
             "overflow-hidden rounded-lg bg-elevated",
-            tall ? "aspect-[4/5] sm:aspect-[16/11]" : "aspect-[16/10]",
+            tall ? "aspect-[16/10]" : "aspect-[16/9]",
           )}
         >
           <CoverImage

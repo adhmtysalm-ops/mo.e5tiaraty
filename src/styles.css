@@ -27,12 +27,12 @@
 }
 
 :root {
-  --app-bg: #f3f3f0;
+  --app-bg: #ffffff;
   --app-fg: #141416;
   --app-muted: #5c5c57;
   --app-subtle: #8a8a84;
-  --app-surface: #fffcf8;
-  --app-elevated: #ffffff;
+  --app-surface: #ffffff;
+  --app-elevated: #f7f7f5;
   --app-border: color-mix(in oklab, #141416 10%, transparent);
   --app-accent: #d01212;
   --app-accent-fg: #ffffff;
@@ -148,6 +148,11 @@
   padding-inline-end: 1.5rem;
 }
 
+.editorial-lead img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
 .editorial-column {
   border-inline-start: 1px solid var(--app-border);
   padding-inline: 1.25rem;
@@ -181,6 +186,22 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+/* Every editorial thumbnail uses a deliberate crop window. The source image
+   can be portrait or landscape, but the reader always gets a stable rhythm. */
+.editorial-column img,
+.editorial-card-grid img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.editorial-column .group > div:first-child {
+  aspect-ratio: 16 / 10;
+}
+
+.editorial-card-grid article > div:first-child {
+  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 1023px) {
