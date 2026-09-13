@@ -1,9 +1,7 @@
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { decodeHtml, estimateReadingMinutes, stripTags } from "@/lib/format";
 import { sanitizeWpHtml } from "@/lib/wp/sanitize.server";
 import { LOCAL_LOGO, WP_API, WP_ORIGIN, wpAuthHeader } from "@/lib/wp/config.server";
+import snapshotData from "./snapshot.json";
 import type {
   Author,
   ContactResult,
@@ -28,9 +26,7 @@ type Snapshot = {
   pages: Record<string, WpPage>;
 };
 
-const snapshot: Snapshot = JSON.parse(
-  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "snapshot.json"), "utf8"),
-) as Snapshot;
+const snapshot = snapshotData as Snapshot;
 
 type WpFetchResult<T> = {
   data: T;
