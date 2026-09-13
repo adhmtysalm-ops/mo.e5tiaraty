@@ -10,3 +10,5 @@ node_modules/
 .grok/status
 agent/
 screenshots/
+.vercel
+.env*
