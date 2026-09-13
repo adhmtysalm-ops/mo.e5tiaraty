@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Geometric checkmark-e: a Rubik-like Latin e whose exit stroke is a tick. -->
+  <g stroke="#D01212" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21.9 11.7A8.05 8.05 0 1 0 21.9 20.7"/>
+    <path d="M7.6 16.2h14.8"/>
+    <path d="M21.4 20.5l5.2 5"/>
+  </g>
+</svg>

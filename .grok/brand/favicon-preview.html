@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+  html, body { margin: 0; background: #888; }
+  .row { display: flex; gap: 24px; padding: 24px; align-items: end; }
+  .cell { text-align: center; font: 12px/1.2 sans-serif; color: #111; }
+  .tile { image-rendering: pixelated; background: #fff; }
+  .dark { background: #222; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="cell">
+      <img class="tile" src="favicon.svg" width="16" height="16"/>
+      <div>16</div>
+    </div>
+    <div class="cell">
+      <img class="tile" src="favicon.svg" width="32" height="32"/>
+      <div>32</div>
+    </div>
+    <div class="cell">
+      <img class="tile dark" src="favicon.svg" width="32" height="32"/>
+      <div>32 dark</div>
+    </div>
+    <div class="cell">
+      <img class="tile" src="favicon.svg" width="64" height="64"/>
+      <div>64</div>
+    </div>
+    <div class="cell">
+      <img class="tile" src="favicon.svg" width="128" height="128"/>
+      <div>128</div>
+    </div>
+  </div>
+</body>
+</html>
